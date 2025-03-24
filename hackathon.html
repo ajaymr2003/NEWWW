@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Fly - Add a Review</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #080C10;
+            color: #C5C6C7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #1F2833;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #66FCF1;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #C5C6C7;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
+            box-sizing: border-box;
+        }
+
+        main h2 {
+            font-size: 2.5em;
+            color: #66FCF1;
+            margin-bottom: 20px;
+        }
+
+        .review-form {
+            background-color: #1F2833;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .review-form label {
+            margin-top: 10px;
+            color: #C5C6C7;
+            font-size: 1em;
+            display: block;
+            text-align: left;
+        }
+
+        .review-form input, .review-form textarea, .review-form select {
+            padding: 10px;
+            border: 1px solid #45A29E;
+            border-radius: 5px;
+            font-size: 1em;
+            color: #C5C6C7;
+            background-color: #080C10;
+            margin-top: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            resize: none;
+        }
+
+        .review-form textarea {
+            height: 120px;
+        }
+
+        .review-form button {
+            background-color: #45A29E;
+            color: #C5C6C7;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            align-self: center;
+            width: 50%;
+            max-width: 200px;
+        }
+
+        .review-form button:hover {
+            background-color: #66FCF1;
+            color: #080C10;
+        }
+
+        footer {
+            background-color: #1F2833;
+            color: #C5C6C7;
+            text-align: center;
+            padding: 15px;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .team-section {
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #45A29E;
+        }
+
+        .team-section h3 {
+            color: #66FCF1;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">First Fly</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Forums</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Members</a></li>
+                <li><a href="events.html">Events</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Add a Review</h2>
+        <form class="review-form">
+
+            <div class="team-section">
+                <h3>SMART BUS</h3>
+                <label for="team1-name">Team Name:</label>
+                <input type="text" id="team1-name" name="team1-name" value="SMART BUS" required readonly>
+                <label for="team1-design">Design:</label>
+                <select id="team1-design" name="team1-design" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team1-presentation">Presentation:</label>
+                <select id="team1-presentation" name="team1-presentation" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team1-critical-thinking">Critical Thinking:</label>
+                <select id="team1-critical-thinking" name="team1-critical-thinking" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team1-test1">Test 1:</label>
+                <select id="team1-test1" name="team1-test1" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team1-test2">Test 2:</label>
+                <select id="team1-test2" name="team1-test2" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
+
+            <div class="team-section">
+                <h3>AUTO</h3>
+                <label for="team2-name">Team Name:</label>
+                <input type="text" id="team2-name" name="team2-name" value="AUTO" required readonly>
+                <label for="team2-design">Design:</label>
+                <select id="team2-design" name="team2-design" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team2-presentation">Presentation:</label>
+                <select id="team2-presentation" name="team2-presentation" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team2-critical-thinking">Critical Thinking:</label>
+                <select id="team2-critical-thinking" name="team2-critical-thinking" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team2-test1">Test 1:</label>
+                <select id="team2-test1" name="team2-test1" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team2-test2">Test 2:</label>
+                <select id="team2-test2" name="team2-test2" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
+
+            <div class="team-section">
+                <h3>RECIPE</h3>
+                <label for="team3-name">Team Name:</label>
+                <input type="text" id="team3-name" name="team3-name" value="RECIPE" required readonly>
+                <label for="team3-design">Design:</label>
+                <select id="team3-design" name="team3-design" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team3-presentation">Presentation:</label>
+                <select id="team3-presentation" name="team3-presentation" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team3-critical-thinking">Critical Thinking:</label>
+                <select id="team3-critical-thinking" name="team3-critical-thinking" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team3-test1">Test 1:</label>
+                <select id="team3-test1" name="team3-test1" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team3-test2">Test 2:</label>
+                <select id="team3-test2" name="team3-test2" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
+
+            <div class="team-section">
+                <h3>HOSPITAL</h3>
+                <label for="team4-name">Team Name:</label>
+                <input type="text" id="team4-name" name="team4-name" value="HOSPITAL" required readonly>
+                <label for="team4-design">Design:</label>
+                <select id="team4-design" name="team4-design" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team4-presentation">Presentation:</label>
+                <select id="team4-presentation" name="team4-presentation" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team4-critical-thinking">Critical Thinking:</label>
+                <select id="team4-critical-thinking" name="team4-critical-thinking" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team4-test1">Test 1:</label>
+                <select id="team4-test1" name="team4-test1" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team4-test2">Test 2:</label>
+                <select id="team4-test2" name="team4-test2" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
+
+            <div class="team-section">
+                <h3>Team 5</h3>
+                <label for="team5-name">Team Name:</label>
+                <input type="text" id="team5-name" name="team5-name"  required readonly>
+                <label for="team5-design">Design:</label>
+                <select id="team5-design" name="team5-design" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team5-presentation">Presentation:</label>
+                <select id="team5-presentation" name="team5-presentation" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team5-critical-thinking">Critical Thinking:</label>
+                <select id="team5-critical-thinking" name="team5-critical-thinking" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team5-test1">Test 1:</label>
+                <select id="team5-test1" name="team5-test1" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team5-test2">Team 5 - Test 2:</label>
+                <select id="team5-test2" name="team5-test2" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
+
+            <div class="team-section">
+                <h3>Team 6</h3>
+                <label for="team6-name">Team Name:</label>
+                <input type="text" id="team6-name" name="team6-name"  required readonly>
+                <label for="team6-design">Design:</label>
+                <select id="team6-design" name="team6-design" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team6-presentation">Presentation:</label>
+                <select id="team6-presentation" name="team6-presentation" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team6-critical-thinking">Critical Thinking:</label>
+                <select id="team6-critical-thinking" name="team6-critical-thinking" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team6-test1">Test 1:</label>
+                <select id="team6-test1" name="team6-test1" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team6-test2">Team 6 - Test 2:</label>
+                <select id="team6-test2" name="team6-test2" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
+
+            <button type="submit">Submit Review</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 First Fly | <a href="https://firstfly.com" style="color:#66FCF1; text-decoration:none;">Visit Our Website</a></p>
+    </footer>
+</body>
+</html>
