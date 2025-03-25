@@ -104,7 +104,7 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    if (data.records.length > 0) {
+                    if (data.records && data.records.length > 0) { // changed data.records.length to data?.records?.length
                         // Roll number already exists
                         rollNumberError.textContent = 'Roll number already exists. Please use a different one.';
                         rollNumberError.style.display = 'block';
