@@ -80,7 +80,7 @@
             width: 100%;
             box-sizing: border-box;
             margin-bottom: 20px;
-            overflow-x: auto; /* Enable horizontal scrolling for wide tables */
+            overflow-x: auto;
         }
 
         #reviews-container h3 {
@@ -117,7 +117,6 @@
         #reviews-table tbody tr:nth-child(even) {
             background-color: #080C10;
         }
-
 
         #total-reviews {
             font-size: 1.2em;
@@ -169,7 +168,6 @@
         <div id="loading-indicator">Loading reviews...</div>
         <div id="error-message" class="error-message" style="display:none;"></div>
         <div id="reviews-container" style="display:none;">
-            <h3>Team Reviews</h3>
             <table id="reviews-table">
                 <thead>
                     <tr>
@@ -184,7 +182,6 @@
                 <tbody>
                 </tbody>
             </table>
-            <p id="total-reviews"></p>
         </div>
     </main>
 
@@ -207,7 +204,6 @@
             const errorMessageElement = document.getElementById("error-message");
             const reviewsContainer = document.getElementById("reviews-container");
             const reviewsTableBody = document.getElementById("reviews-table").querySelector("tbody");
-            const totalReviewsElement = document.getElementById("total-reviews");
 
             loadingIndicator.style.display = "block";
             errorMessageElement.style.display = "none";
@@ -237,9 +233,8 @@
                     return;
                 }
 
-                let totalReviews = 0;
                 let tableHtml = "";
-
+                const teamData = {};
 
                 allReviews.forEach(review => {
                     const teamName = review.fields["Team Name"];
@@ -249,23 +244,37 @@
                     const problemSolving = review.fields["Problem Solving"];
                     const overall = review.fields["Overall"];
 
+                    if (!teamData[teamName]) {
+                        teamData[teamName] = {
+                            design: 0,
+                            presentation: 0,
+                            criticalThinking: 0,
+                            problemSolving: 0,
+                            overall: 0,
+                        };
+                    }
 
+                    teamData[teamName].design += design;
+                    teamData[teamName].presentation += presentation;
+                    teamData[teamName].criticalThinking += criticalThinking;
+                    teamData[teamName].problemSolving += problemSolving;
+                    teamData[teamName].overall += overall;
+                });
+
+                for (const teamName in teamData) {
                     tableHtml += `
                         <tr>
                             <td>${teamName}</td>
-                            <td>${design}</td>
-                            <td>${presentation}</td>
-                            <td>${criticalThinking}</td>
-                            <td>${problemSolving}</td>
-                            <td>${overall}</td>
+                            <td>${teamData[teamName].design}</td>
+                            <td>${teamData[teamName].presentation}</td>
+                            <td>${teamData[teamName].criticalThinking}</td>
+                            <td>${teamData[teamName].problemSolving}</td>
+                            <td>${teamData[teamName].overall}</td>
                         </tr>
                     `;
-                    totalReviews++;
-                });
-
+                }
 
                 reviewsTableBody.innerHTML = tableHtml;
-                totalReviewsElement.textContent = `Total Reviews: ${totalReviews}`;
                 loadingIndicator.style.display = "none";
                 reviewsContainer.style.display = "block";
 
