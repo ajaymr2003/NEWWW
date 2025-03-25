@@ -49,9 +49,9 @@
         const passwordError = document.getElementById('password-error');
 
         // Airtable API Configuration
-        const AIRTABLE_API_KEY = 'YOUR_AIRTABLE_API_KEY';  // Replace with your actual API key
+        const AIRTABLE_API_KEY = 'pat3J8WCAlrvGtr4v.391d125d9524830647f571af8b0d74d892f53e70e6da50c4292a4abe8cc079e0';  // Replace with your actual API key
         const AIRTABLE_BASE_ID = 'apphIRpiGiAxAqmOZ'; // Replace with your actual base ID
-        const AIRTABLE_TABLE_NAME = 'Users';           // Replace with your actual table name
+        const AIRTABLE_TABLE_NAME = 'login';           // Replace with your actual table name
 
         function validateRollNumber(rollNumber) {
             return /^\d{2}$/.test(rollNumber);
@@ -104,7 +104,7 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    if (data.records && data.records.length > 0) { // changed data.records.length to data?.records?.length
+                    if (data?.records?.length > 0) {
                         // Roll number already exists
                         rollNumberError.textContent = 'Roll number already exists. Please use a different one.';
                         rollNumberError.style.display = 'block';
