@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Fly - Reviews</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #080C10;
+            color: #C5C6C7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #1F2833;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #66FCF1;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #C5C6C7;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        main h2 {
+            font-size: 2.5em;
+            color: #66FCF1;
+            margin-bottom: 20px;
+        }
+
+        #reviews-container {
+            background-color: #1F2833;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            overflow-x: auto; /* Enable horizontal scrolling for wide tables */
+        }
+
+        #reviews-container h3 {
+            font-size: 1.5em;
+            color: #66FCF1;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        #reviews-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            color: #C5C6C7;
+            font-size: 1.1em;
+        }
+
+        #reviews-table th, #reviews-table td {
+            border: 1px solid #45A29E;
+            padding: 12px;
+            text-align: left;
+        }
+
+        #reviews-table th {
+            background-color: #45A29E;
+            color: #080C10;
+            font-weight: bold;
+        }
+
+        #reviews-table tbody tr:nth-child(odd) {
+            background-color: #1F2833;
+        }
+
+        #reviews-table tbody tr:nth-child(even) {
+            background-color: #080C10;
+        }
+
+
+        #total-reviews {
+            font-size: 1.2em;
+            color: #66FCF1;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #1F2833;
+            color: #C5C6C7;
+            text-align: center;
+            padding: 15px;
+            margin-top: auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #loading-indicator {
+            color: #66FCF1;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">First Fly</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Forums</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Members</a></li>
+                <li><a href="events.html">Events</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Reviews</h2>
+        <div id="loading-indicator">Loading reviews...</div>
+        <div id="error-message" class="error-message" style="display:none;"></div>
+        <div id="reviews-container" style="display:none;">
+            <h3>Team Reviews</h3>
+            <table id="reviews-table">
+                <thead>
+                    <tr>
+                        <th>Team Name</th>
+                        <th>Design</th>
+                        <th>Presentation</th>
+                        <th>Critical Thinking</th>
+                        <th>Problem Solving</th>
+                        <th>Overall</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <p id="total-reviews"></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 First Fly | <a href="https://firstfly.com" style="color:#66FCF1; text-decoration:none;">Visit Our Website</a></p>
+    </footer>
+
+    <script>
+        const API_URL = "https://api.airtable.com/v0/apphIRpiGiAxAqmOZ/tbln7Iqb2hq4JkEd9/";
+        const API_KEY = "pat3J8WCAlrvGtr4v.391d125d9524830647f571af8b0d74d892f53e70e6da50c4292a4abe8cc079e0";
+
+        const teamNames = ["SMART BUS", "TUK TUK", "RECIPE", "OP TICKET", "AI NEW", "TASK MANAGER"];
+
+        window.onload = function () {
+            fetchReviews();
+        };
+
+        async function fetchReviews() {
+            const loadingIndicator = document.getElementById("loading-indicator");
+            const errorMessageElement = document.getElementById("error-message");
+            const reviewsContainer = document.getElementById("reviews-container");
+            const reviewsTableBody = document.getElementById("reviews-table").querySelector("tbody");
+            const totalReviewsElement = document.getElementById("total-reviews");
+
+            loadingIndicator.style.display = "block";
+            errorMessageElement.style.display = "none";
+            reviewsContainer.style.display = "none";
+
+            try {
+                let allReviews = [];
+                for (const teamName of teamNames) {
+                    const response = await fetch(`${API_URL}?filterByFormula={Team Name}="${teamName}"`, {
+                        headers: {
+                            "Authorization": `Bearer ${API_KEY}`
+                        }
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Failed to fetch reviews for ${teamName}. Status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    allReviews = allReviews.concat(data.records);
+                }
+
+                if (allReviews.length === 0) {
+                    errorMessageElement.textContent = "No reviews found.";
+                    errorMessageElement.style.display = "block";
+                    loadingIndicator.style.display = "none";
+                    return;
+                }
+
+                let totalReviews = 0;
+                let tableHtml = "";
+
+
+                allReviews.forEach(review => {
+                    const teamName = review.fields["Team Name"];
+                    const design = review.fields["Design"];
+                    const presentation = review.fields["Presentation"];
+                    const criticalThinking = review.fields["Critical Thinking"];
+                    const problemSolving = review.fields["Problem Solving"];
+                    const overall = review.fields["Overall"];
+
+
+                    tableHtml += `
+                        <tr>
+                            <td>${teamName}</td>
+                            <td>${design}</td>
+                            <td>${presentation}</td>
+                            <td>${criticalThinking}</td>
+                            <td>${problemSolving}</td>
+                            <td>${overall}</td>
+                        </tr>
+                    `;
+                    totalReviews++;
+                });
+
+
+                reviewsTableBody.innerHTML = tableHtml;
+                totalReviewsElement.textContent = `Total Reviews: ${totalReviews}`;
+                loadingIndicator.style.display = "none";
+                reviewsContainer.style.display = "block";
+
+            } catch (error) {
+                errorMessageElement.textContent = `An error occurred: ${error.message}`;
+                errorMessageElement.style.display = "block";
+                loadingIndicator.style.display = "none";
+                console.error("Error fetching data:", error);
+            }
+        }
+    </script>
+</body>
+</html>
