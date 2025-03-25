@@ -445,5 +445,42 @@
     <footer>
         <p>&copy; 2025 First Fly | <a href="https://firstfly.com" style="color:#66FCF1; text-decoration:none;">Visit Our Website</a></p>
     </footer>
+    <script>
+        document.querySelector(".review-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const data = {
+        fields: {
+            "Team Name": formData.get("team1-name"),
+            "Design": formData.get("team1-design"),
+            "Presentation": formData.get("team1-presentation"),
+            "Critical Thinking": formData.get("team1-critical-thinking"),
+            "Test 1": formData.get("team1-test1"),
+            "Test 2": formData.get("team1-test2")
+        }
+    };
+
+    const API_URL = "https://api.airtable.com/v0/apphIRpiGiAxAqmOZ/reviews";
+    const API_KEY = "pat3J8WCAlrvGtr4v.391d125d9524830647f571af8b0d74d892f53e70e6da50c4292a4abe8cc079e0"; 
+
+    const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${API_KEY}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+        alert("Review submitted successfully!");
+        this.reset();
+    } else {
+        alert("Error submitting review.");
+    }
+});
+
+    </script>
 </body>
 </html>
