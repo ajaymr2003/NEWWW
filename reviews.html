@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Fly - Events</title>
+    <title>First Fly - Add a Review</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -11,6 +11,11 @@
             color: #C5C6C7;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
         }
 
         header {
@@ -19,6 +24,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
         }
 
         .logo {
@@ -45,32 +51,57 @@
             font-size: 1em;
         }
 
-        .events-section {
-            padding: 60px 20px;
+        main {
+            padding: 20px;
             text-align: center;
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
+            box-sizing: border-box;
         }
 
-        .events-section h2 {
+        main h2 {
             font-size: 2.5em;
             color: #66FCF1;
             margin-bottom: 20px;
         }
 
-        .event {
+        .review-form {
             background-color: #1F2833;
             padding: 20px;
             border-radius: 8px;
-            margin: 15px auto;
-            width: 60%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
         }
 
-        .event h3 {
-            color: #66FCF1;
-            font-size: 1.5em;
+        .review-form label {
+            margin-top: 10px;
+            color: #C5C6C7;
+            font-size: 1em;
+            display: block;
+            text-align: left;
         }
 
-        .event button {
+        .review-form input, .review-form textarea, .review-form select {
+            padding: 10px;
+            border: 1px solid #45A29E;
+            border-radius: 5px;
+            font-size: 1em;
+            color: #C5C6C7;
+            background-color: #080C10;
+            margin-top: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            resize: none;
+        }
+
+        .review-form textarea {
+            height: 120px;
+        }
+
+        .review-form button {
             background-color: #45A29E;
             color: #C5C6C7;
             padding: 10px 15px;
@@ -78,37 +109,16 @@
             border-radius: 5px;
             font-size: 1em;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            align-self: center;
+            width: 50%;
+            max-width: 200px;
         }
 
-        .event button:hover {
+        .review-form button:hover {
             background-color: #66FCF1;
             color: #080C10;
-        }
-
-        .review-section {
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .review-section h2 {
-            font-size: 2.5em;
-            color: #66FCF1;
-            margin-bottom: 20px;
-        }
-
-        .review {
-            background-color: #1F2833;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 10px auto;
-            width: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .review p {
-            font-size: 1em;
-            color: #C5C6C7;
         }
 
         footer {
@@ -116,8 +126,21 @@
             color: #C5C6C7;
             text-align: center;
             padding: 15px;
-            margin-top: 40px;
+            margin-top: auto;
             width: 100%;
+        }
+
+        .team-section {
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #45A29E;
+        }
+
+        .team-section h3 {
+            color: #66FCF1;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            text-align: left;
         }
     </style>
 </head>
@@ -130,54 +153,358 @@
                 <li><a href="#">Forums</a></li>
                 <li><a href="#">Resources</a></li>
                 <li><a href="#">Members</a></li>
-                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="events.html">Events</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="events-section">
-        <h2>Completed Events</h2>
-        <div class="event">
-            <h3>First Fly Hackathon 2025</h3>
-            <p>Our very first hackathon, focused on innovative solutions for the future of flight.</p>
-            <button onclick="window.location.href='hackathon.html'">Add Review</button>
-        </div>
-        <div class="event">
-            <h3>AI & ML Conference</h3>
-            <p>Industry experts shared insights on the latest trends in AI and Machine Learning.</p>
-            <button onclick="window.location.href='https://aimlconference.com'">Add Review</button>
-        </div>
-        <div class="event">
-            <h3>Cybersecurity Summit</h3>
-            <p>Explored the latest threats and security practices with top cybersecurity professionals.</p>
-            <button onclick="window.location.href='https://cybersecuritysummit.com'">Add Review</button>
-        </div>
+    <main>
+        <h2>Add a Review</h2>
+        <form class="review-form" id="reviewForm">
 
-        <h2>Upcoming Events</h2>
-        <div class="event">
-            <h3>Tech Innovation Expo 2025</h3>
-            <p>Showcasing the latest advancements in technology and software development.</p>
-            <button onclick="window.location.href='https://techinnovationexpo.com'">Learn More</button>
-        </div>
-        <div class="event">
-            <h3>Cloud Computing Workshop</h3>
-            <p>Hands-on training with industry leaders in cloud technology and DevOps.</p>
-            <button onclick="window.location.href='https://cloudworkshop.com'">Learn More</button>
-        </div>
-    </section>
+            <div class="team-section">
+                <h3>SMART BUS</h3>
+                <label for="team1-name">Team Name:</label>
+                <input type="text" id="team1-name" name="team1-name" value="SMART BUS" required readonly>
+                <label for="team1-design">Design:</label>
+                <select id="team1-design" name="team1-design" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team1-presentation">Presentation:</label>
+                <select id="team1-presentation" name="team1-presentation" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team1-critical-thinking">Critical Thinking:</label>
+                <select id="team1-critical-thinking" name="team1-critical-thinking" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team1-problem-solving">Problem Solving:</label>
+                <select id="team1-problem-solving" name="team1-test1" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team1-overall">Overall:</label>
+                <select id="team1-test2" name="team1-test2" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
 
-    <section class="review-section">
-        <h2>User Reviews</h2>
-        <div class="review">
-            <p>"First Fly Hackathon 2025 was an incredible experience! The collaboration and learning opportunities were amazing." - John Doe</p>
-        </div>
-        <div class="review">
-            <p>"AI & ML Conference gave me deep insights into the latest trends in artificial intelligence. Highly recommended!" - Jane Smith</p>
-        </div>
-    </section>
+            <div class="team-section">
+                <h3>TUK TUK</h3>  <label for="team2-name">Team Name:</label>
+                <input type="text" id="team2-name" name="team2-name" value="TUK TUK" required readonly>  <label for="team2-design">Design:</label>
+                <select id="team2-design" name="team2-design" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team2-presentation">Presentation:</label>
+                <select id="team2-presentation" name="team2-presentation" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team2-critical-thinking">Critical Thinking:</label>
+                <select id="team2-critical-thinking" name="team2-critical-thinking" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team2-test1">Problem Solving:</label>
+                <select id="team2-test1" name="team2-test1" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team2-overall">Overall:</label>
+                <select id="team2-test2" name="team2-test2" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
+
+            <div class="team-section">
+                <h3>RECIPE</h3>  <label for="team3-name">Team Name:</label>
+                <input type="text" id="team3-name" name="team3-name" value="RECIPE" required readonly>  <label for="team3-design">Design:</label>
+                <select id="team3-design" name="team3-design" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team3-presentation">Presentation:</label>
+                <select id="team3-presentation" name="team3-presentation" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team3-critical-thinking">Critical Thinking:</label>
+                <select id="team3-critical-thinking" name="team3-critical-thinking" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team3-test1">Problem Solving:</label>
+                <select id="team3-test1" name="team3-test1" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team3-overall">Overall:</label>
+                <select id="team3-test2" name="team3-test2" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
+
+            <div class="team-section">
+                <h3>OP TICKET</h3>  <label for="team4-name">Team Name:</label>
+                <input type="text" id="team4-name" name="team4-name" value="OP TICKET" required readonly>  <label for="team4-design">Design:</label>
+                <select id="team4-design" name="team4-design" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team4-presentation">Presentation:</label>
+                <select id="team4-presentation" name="team4-presentation" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team4-critical-thinking">Critical Thinking:</label>
+                <select id="team4-critical-thinking" name="team4-critical-thinking" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team4-test1">Problem Solving:</label>
+                <select id="team4-test1" name="team4-test1" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team4-overall">Overall:</label>
+                <select id="team4-test2" name="team4-test2" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
+
+            <div class="team-section">
+                <h3>AI NEW</h3>  <label for="team5-name">Team Name:</label>
+                <input type="text" id="team5-name" name="team5-name"  value="AI NEW" required readonly>  <label for="team5-design">Design:</label>
+                <select id="team5-design" name="team5-design" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team5-presentation">Presentation:</label>
+                <select id="team5-presentation" name="team5-presentation" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team5-critical-thinking">Critical Thinking:</label>
+                <select id="team5-critical-thinking" name="team5-critical-thinking" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team5-test1">Problem Solving:</label>
+                <select id="team5-test1" name="team5-test1" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team5-overall">Overall:</label>
+                <select id="team5-test2" name="team5-test2" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
+
+            <div class="team-section">
+                <h3>TASK MANAGER</h3>  <label for="team6-name">Team Name:</label>
+                <input type="text" id="team6-name" name="team6-name"  value="TASK MANAGER" required readonly>  <label for="team6-design">Design:</label>
+                <select id="team6-design" name="team6-design" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team6-presentation">Presentation:</label>
+                <select id="team6-presentation" name="team6-presentation" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team6-critical-thinking">Critical Thinking:</label>
+                <select id="team6-critical-thinking" name="team6-critical-thinking" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team6-test1">Problem Solving:</label>
+                <select id="team6-test1" name="team6-test1" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <label for="team6-overall">Overall:</label>
+                <select id="team6-test2" name="team6-test2" required>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
+
+            <button type="submit">Submit Review</button>
+        </form>
+    </main>
 
     <footer>
         <p>&copy; 2025 First Fly | <a href="https://firstfly.com" style="color:#66FCF1; text-decoration:none;">Visit Our Website</a></p>
     </footer>
+    <script>
+        document.querySelector("#reviewForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const data = {
+                fields: {
+                    "Team Name": formData.get("team1-name"),
+                    "Design": formData.get("team1-design"),
+                    "Presentation": formData.get("team1-presentation"),
+                    "Critical Thinking": formData.get("team1-critical-thinking"),
+                    "Problem Solving": formData.get("team1-test1"),  
+                    "Overall": formData.get("team1-test2"), 
+                    "Team Name 2": formData.get("team2-name"),
+                    "Design 2": formData.get("team2-design"),
+                    "Presentation 2": formData.get("team2-presentation"),
+                    "Critical Thinking 2": formData.get("team2-critical-thinking"),
+                    "Problem Solving Team 2": formData.get("team2-test1"),  
+                    "Overall Team 2": formData.get("team2-test2"),  
+                    "Team Name 3": formData.get("team3-name"),
+                    "Design 3": formData.get("team3-design"),
+                    "Presentation 3": formData.get("team3-presentation"),
+                    "Critical Thinking 3": formData.get("team3-critical-thinking"),
+                    "Problem Solving Team 3": formData.get("team3-test1"),  
+                    "Overall Team 3": formData.get("team3-test2"),  
+                    "Team Name 4": formData.get("team4-name"),
+                    "Design 4": formData.get("team4-design"),
+                    "Presentation 4": formData.get("team4-presentation"),
+                    "Critical Thinking 4": formData.get("team4-critical-thinking"),
+                    "Problem Solving Team 4": formData.get("team4-test1"),  
+                    "Overall Team 4": formData.get("team4-test2"),  
+                    "Team Name 5": formData.get("team5-name"),
+                    "Design 5": formData.get("team5-design"),
+                    "Presentation 5": formData.get("team5-presentation"),
+                    "Critical Thinking 5": formData.get("team5-critical-thinking"),
+                    "Problem Solving Team 5": formData.get("team5-test1"),  
+                    "Overall Team 5": formData.get("team5-test2"),  
+                    "Team Name 6": formData.get("team6-name"),
+                    "Design 6": formData.get("team6-design"),
+                    "Presentation 6": formData.get("team6-presentation"),
+                    "Critical Thinking 6": formData.get("team6-critical-thinking"),
+                    "Problem Solving Team 6": formData.get("team6-test1"),  
+                    "Overall Team 6": formData.get("team6-test2"),  
+                }
+            };
+
+            //  Replace with your actual Airtable URL.  
+            //  It should look like:  https://api.airtable.com/v0/YOUR_BASE_ID/YOUR_TABLE_NAME
+            const API_URL = "https://api.airtable.com/v0/apphIRpiGiAxAqmOZ/tblEDfXQZmphNc7c3/";  //  <---------------------- CORRECTED LINE
+
+            //  Replace with your actual Airtable API key.  It looks like: keyXXXXXXXXXXXXXXXXXXXX
+            const API_KEY = "pat3J8WCAlrvGtr4v.391d125d9524830647f571af8b0d74d892f53e70e6da50c4292a4abe8cc079e0";  // <---------------------- REPLACE THIS LINE
+
+            const response = await fetch(API_URL, {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${API_KEY}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                alert("Review submitted successfully!");
+                this.reset();
+            } else {
+                const errorText = await response.text();
+                alert(`Error submitting review: ${response.status} - ${errorText}`);
+            }
+        });
+    </script>
 </body>
 </html>
